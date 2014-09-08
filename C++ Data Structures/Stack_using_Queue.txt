@@ -1,0 +1,83 @@
+// Stack using queue
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+
+class Queue
+{
+ private:
+         int *a,size,front,rear;
+ public:
+        Queue()
+        {
+         size=10;
+         a=new int[10];
+         front=rear=-1;      
+        }
+        Queue(int no)
+        {
+         size=no;
+         a=new int[size];
+         front=rear=-1;   
+        }        
+        void Enqueue(int element)
+        {
+          if(isFull())
+          {
+            cout<<"queue is full cannot push"<<endl;
+          }
+          else
+          {           
+            rear++;  
+            a[rear]=element; 
+            front=rear; 
+            cout<<"Element entered successfully"<<endl;
+          }
+        } //Enqueue
+        bool isFull()
+        {
+          return (rear==size-1);     
+        } //isfull
+        int Dequeue()
+        {
+          if(isEmpty())
+          {
+            cout<<"queue is empty cannot pop"<<endl; 
+            return -1;            
+          }
+          else
+          {           
+            int returnelem=a[front];  
+            front--; 
+            rear=front;       
+            cout<<"Dequed element"<<returnelem<<endl;
+            return returnelem;    
+          }              
+        } //Dequeue
+        bool isEmpty()
+        {
+          return (front==-1);     
+        }
+};
+ 
+ int main(){
+    int no,size;
+  cout<<"Enter the size of the queue \n";  
+  cin>>size;
+  Queue s1(size);
+  for(int i=0;i<size;i++)
+  {
+    cout<<"Enter element"<<(i+1)<<" in queue \n";
+    cin>>no;
+    s1.Enqueue(no);  
+  }  // for
+  s1.Enqueue(10);
+  for(int i=0;i<size;i++)
+  {
+    s1.Dequeue();
+  }
+  s1.Dequeue();
+  getch();  
+return 0;    
+}

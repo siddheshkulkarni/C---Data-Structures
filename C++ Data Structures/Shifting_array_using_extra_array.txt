@@ -1,0 +1,49 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+int *a,*b,size;
+void shift(int);
+void display(){
+for(int i=0;i<size;i++){
+ cout<<a[i]<<endl;
+ }  //for     
+}
+void shift(int no){
+ int index;
+ b=new int[size];
+ for(int i=0;i<size;i++){
+  if(i+no<size){
+   b[i+no]=a[i];  
+   cout<<i+no<<endl;
+   index=i;    
+   }
+  } //for
+  index++;
+ for(int j=0;j<no;j++){
+   b[j]=a[index];
+   index++;
+ }
+ for(int g=0;g<size;g++)
+   a[g]=b[g];
+     
+}
+int main(){
+    int no;
+  cout<<"Enter the size of the array";  
+  cin>>size;
+  a=new int[size];  
+    for(int i=0;i<size;i++){
+  cout<<"Enter the element"<<(i+1);  
+  cin>>a[i];         
+  }
+  cout<<"Enter how many times you want to shift array";
+  cin>>no;
+  cout<<"Before Shift---- \n";
+  display();
+  shift(no);
+  cout<<"After Shift--- \n";
+  display();
+  getch();  
+    
+return 1;    
+}

@@ -1,0 +1,39 @@
+
+//Reversed Array
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+int *a,size;
+void reverse();
+
+void display(){
+for(int i=0;i<size;i++)
+ cout<<a[i]<<'\n';      
+}
+void reverse(){
+     int temp=0;
+ for(int j=0;j<(size-1)/2;j++){
+     temp=a[j];
+     a[j]=a[size-1-j];
+     a[size-1-j]=temp;  
+ }    
+     
+}
+int main(){
+  int i,temp;
+  cout<<"Enter the size of array \n";  
+  cin>>size;
+  a=new int[size];
+  for(i=0;i<size;i++){
+   cout<<"Enter the element "<<(i+1)<<endl;     
+   cin>>a[i];     
+  } //for
+  display();
+  cout<<"Reversed Array----"<<endl;
+  reverse();
+  display();
+  getch();
+  delete[] a;
+  return 1;
+}

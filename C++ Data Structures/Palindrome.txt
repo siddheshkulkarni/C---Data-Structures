@@ -1,0 +1,50 @@
+//Palindrome
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+#include<string.h>
+int size;
+char a[111];
+bool palindrome();
+
+bool palindrome(){
+     cout<<"Inside";
+ int count=0,siz=0,j=0,i; 
+ bool value=true; 
+  while(a[j]!='\0')
+  {j++;}
+  siz=j;
+  cout<<"size"<<siz<<endl;
+ for(i=0;i<=siz/2;i++){
+   if(!(a[i]==a[siz-1-i])){
+     value=false;break;
+   }
+ } //for  
+   return value;
+ 
+}
+int main(){
+    int no;
+    char c;
+    char d[100];
+   std::string str1="";
+ // cout<<"Enter the size of the string";  
+ 
+ //a=new char[size+1];     
+  cout<<"Enter the string \n";
+   cin>>str1;
+  // a=new char[100];
+  std::strcpy(a,str1.c_str()); 
+ // cout<<str1;
+  
+ 
+  bool ispalindrome=palindrome();
+  if(ispalindrome)
+  {  cout<<"Given string is palindrome";}
+  else cout<<"Given string is not a Palindrome";
+  getch();
+ // delete[] a;   
+    
+return 0;    
+}

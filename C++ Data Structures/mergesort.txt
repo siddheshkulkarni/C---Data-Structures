@@ -1,0 +1,78 @@
+//Mergesort
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+
+int *a,*b,size;
+void merge(int low,int mid,int high);
+void mergesort(int low,int high){
+     int mid;
+     if(low<high){
+  mid=(low+high)/2;
+ mergesort(low,mid);
+ mergesort(mid+1,high);
+ merge(low,mid,high);  
+}    
+}
+void merge(int low,int mid,int high){
+int i,j,k,l;
+i=low;
+j=low;
+k=mid+1;
+b=new int[size+1];
+while((i<=mid)&&(k<=high)){
+if(a[i]<=a[k]) {
+ b[j]=a[i];
+ i++;   
+ j++;          
+}//if
+else{
+ b[j]=a[k]; 
+ k++;   
+ j++;
+}//else        
+} //while
+
+if(i>mid){
+for(int g=k;g<=high;g++){
+ b[j]=a[g];
+ j++;
+}//for 
+}//if
+
+else{
+for(int f=i;f<=mid;f++){
+b[j]=a[f];
+j++;
+}   //for  
+}  //else
+for(int u=low;u<=high;u++){
+a[u]=b[u];        
+}
+      
+
+    
+}//merge
+void display(){
+for(int i=0;i<size;i++){
+ cout<<a[i]<<'\n';
+}     
+}
+int main(){
+int i;
+cout<<"Enter the size of the array";
+cin>>size;
+a=new int[size+1];
+for(i=0;i<size;i++){
+cout<<"Enter the Element"<<(i+1)<<'\n';     
+cin>>a[i];
+}
+cout<<"before mergesort---main"<<endl;
+mergesort(0,size-1);
+cout<<"before display------"<<endl;
+display();
+ getch();
+return 1;    
+}
+

@@ -1,0 +1,85 @@
+// Queue using stack
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+
+class Stack
+{
+ private:
+         int *a,size,top,remove;
+ public:
+        Stack()
+        {
+         size=10;
+         a=new int[10];
+         top=-1;
+         remove=-1;      
+        }
+        Stack(int no)
+        {
+         size=no;
+         a=new int[size];
+         top=-1;
+         remove=-1;
+        }        
+        void Push(int element)
+        {
+          if(isFull())
+          {
+            cout<<"Stack is full cannot push"<<endl;
+          }
+          else
+          {
+            if(top==-1)
+              remove++;
+            top++;  
+            a[top]=element;  
+            cout<<"Element pushed successfully"<<endl;
+          }
+        } //push
+        bool isFull()
+        {
+          return (top==size-1);     
+        } //isfull
+        int Pop()
+        {
+          if(isEmpty())
+          {
+            cout<<"Stack is empty cannot pop"<<endl; 
+            return -1;            
+          }
+          else
+          {
+            int returnelem=a[remove];
+            remove++;
+            cout<<"Popuped element"<<returnelem<<endl;
+            return returnelem;    
+          }              
+        } //pop
+        bool isEmpty()
+        {
+          return (remove>top);     
+        }
+};
+ 
+ int main(){
+    int no,size;
+  cout<<"Enter the size of the stack \n";  
+  cin>>size;
+  Stack s1(size);
+  for(int i=0;i<size;i++)
+  {
+    cout<<"Enter element"<<(i+1)<<" to be pushed \n";
+    cin>>no;
+    s1.Push(no);  
+  }  // for
+  s1.Push(10);
+ // s1.Push(12);
+  for(int i=0;i<size;i++)
+  {
+    s1.Pop();
+  }
+  getch();  
+return 0;    
+}

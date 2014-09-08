@@ -1,0 +1,125 @@
+// LinkedList
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+
+
+struct Node
+{                  
+  public:  
+         int data;          
+         struct Node* next;
+};
+class Linkedlist
+{
+  private:
+          Node* head;
+  public:
+         Linkedlist()
+         {
+          head=NULL;                  
+         }
+         void Add(int value)
+       {
+          Node *temp,*traverse;
+          temp=new Node(); 
+          temp->data=value;
+          temp->next=NULL;
+          if(head==NULL)
+          {
+             head=temp;                  
+          } //if
+          else
+          {
+             traverse=head;
+             while(traverse->next != NULL)
+             {
+                 traverse=traverse->next;                          
+             }   //while
+             traverse->next=temp;             
+          } //else
+       }   //Add  
+        void sort()
+        {
+         Node *traverse,*nextptr;
+         int i,j,temp1;
+         traverse=head;
+         while(traverse->next!=NULL)
+         { 
+           nextptr=traverse->next;
+           while(nextptr!=NULL)
+           {
+             if(nextptr->data < traverse->data)
+             {
+               temp1= traverse->data;
+               traverse->data=nextptr->data;
+               nextptr->data= temp1;                          
+             }
+             nextptr=nextptr->next;                   
+           }
+           traverse=traverse->next; 
+         }   // outer while
+        } 
+        void display()
+        {
+          Node *temp2;
+          temp2=head;
+          while(temp2!=NULL)
+          {
+            cout<<temp2->data<<" ";
+            temp2=temp2->next;     
+          }  
+          
+        } //display
+        void deleteElement(int value)
+        {
+          Node *temp,*prevptr;
+          temp=head;
+         if(temp!=NULL) 
+         { 
+           if(temp->data==value)
+            {
+              cout<<"Inside";
+              head=head->next;  
+              delete temp;
+              return;                  
+            } // inner if
+          } // outer if   
+          while(temp!=NULL&&temp->data!=value)
+          {
+            prevptr=temp;
+            temp=temp->next;            
+          } //while
+          if(temp!=NULL)
+          {
+            prevptr->next=temp->next;            
+          } //if
+          else
+          {
+            cout<<"Element not present";    
+          } // else
+          delete temp; 
+        } //deleteElement
+};
+ int main(){
+    int no,size;
+  cout<<"Enter no of linkedlist elements \n";  
+  cin>>size;
+  Linkedlist l;
+  for(int i=0;i<size;i++)
+  {
+    cout<<"Enter Element \n";
+    cin>>no;
+    l.Add(no);
+  }
+  l.display();
+  l.sort();
+  l.display();
+   cout<<"Enter Element which you want to delete \n";
+    cin>>no;
+  l.deleteElement(no);
+  l.display();
+  getch();  
+return 0;    
+}

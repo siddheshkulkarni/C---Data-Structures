@@ -1,0 +1,38 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+int *a,*b,size;
+void searchElement(int);
+
+void searchElement(int no){
+  int i,j,index1,index2,target;
+  for(i=0;i<size;i++)
+   {
+     target=no-a[i];
+     index1=i;
+     for(j=1;j<size;j++)
+      {
+        if(a[j]==target&& j!=i)
+         {
+           index2=j;
+           cout<<"The elements are "<<a[index1]<<" "<<a[index2]<<endl;
+         }
+      } //inner for
+   } // outer for
+} //searchElement
+int main(){
+    int no;
+  cout<<"Enter the size of the array";  
+  cin>>size;
+  a=new int[size];  
+    for(int i=0;i<size;i++){
+  cout<<"Enter the element"<<(i+1);  
+  cin>>a[i];         
+  }
+  cout<<"Enter element whose's sum of subset is to be searched in the array";
+  cin>>no;  
+ searchElement(no); 
+  getch();  
+    
+return 1;    
+}
